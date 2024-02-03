@@ -21,8 +21,6 @@ import { GoogleMapsModule } from '@angular/google-maps';
     HomeComponent,
     AccountPageComponent,
     StarRatingComponent,
-    ,
-    TestComponent,
   ],
   imports: [
     BrowserModule,

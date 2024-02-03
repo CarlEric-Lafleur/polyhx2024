@@ -1,6 +1,15 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS, cross_origin
+import os
+
+
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config["CORS_HEADER"] = "Content-Type"
+
+
+
 utilisateurs = []
 courses = []
 
@@ -26,6 +35,7 @@ class Course:
         self.rating = rating
 
 @app.route('/user', methods=['POST'])
+@cross_origin()
 def ajouter_utilisateur():
     data = request.get_json()
 
@@ -45,8 +55,12 @@ def ajouter_utilisateur():
     return jsonify({'message': 'Utilisateur ajouté avec succès'})
 
 @app.route('/user', methods=['GET'])
+@cross_origin()
 def obtenir_utilisateurs():
     return jsonify({'utilisateurs': utilisateurs})
+
+
+@cross_origin()
 @app.route('/course', methods=['POST'])
 def acheter_course():
     data = request.get_json()
@@ -82,6 +96,7 @@ def acheter_course():
     else:
         return jsonify({'erreur': 'Le conducteur ou le passager n\'existe pas ou n\'est pas valide'}), 400
 
+@cross_origin
 @app.route('/rating', methods=['POST'])
 def donner_rating():
     data = request.get_json()
@@ -109,6 +124,7 @@ def donner_rating():
     else:
         return jsonify({'erreur': 'La course n\'existe pas'}), 400
 
+@cross_origin
 @app.route('/historique/<nom_utilisateur>', methods=['GET'])
 def obtenir_historique(nom_utilisateur):
     # Trouver l'utilisateur avec le nom spécifié
@@ -120,15 +136,12 @@ def obtenir_historique(nom_utilisateur):
     else:
         return jsonify({'erreur': 'L\'utilisateur spécifié n\'existe pas'}), 400
 
-from flask import Flask, jsonify, send_file
-
-app = Flask(__name__)
-
+@cross_origin
 @app.route('/routes', methods=['GET'])
 def obtenir_route():
     try:
         # Ouvrir et lire le contenu du fichier mapData.json
-        with open("mapData.json", "r") as f:
+        with open(r"C:\Users\Antoine\Desktop\SCHOOL\HIV2024\polyhx\polyhx2024\server\mapData.json", "r") as f:
             contenu_json = f.read()
 
         # Renvoyer le contenu en tant que réponse JSON

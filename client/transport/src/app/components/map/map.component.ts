@@ -16,12 +16,12 @@ export class MapComponent {
   routes: any;
   @ViewChild('map') map: any;
   constructor(mapDirectionsService: MapDirectionsService) {
-    this.routes = fetch('http://localhost:3000/api/routes').then((res) =>
+    this.routes = fetch('http://127.0.0.1:5000/routes').then((res) =>
       res.json()
     );
   }
 
   showCoords(event: any) {
-    console.log([event.latLng.lat(), event.latLng.lng()]);
+    console.log(this.routes);
   }
 }
