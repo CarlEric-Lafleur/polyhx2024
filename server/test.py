@@ -120,5 +120,22 @@ def obtenir_historique(nom_utilisateur):
     else:
         return jsonify({'erreur': 'L\'utilisateur spécifié n\'existe pas'}), 400
 
+from flask import Flask, jsonify, send_file
+
+app = Flask(__name__)
+
+@app.route('/routes', methods=['GET'])
+def obtenir_route():
+    try:
+        # Ouvrir et lire le contenu du fichier mapData.json
+        with open("mapData.json", "r") as f:
+            contenu_json = f.read()
+
+        # Renvoyer le contenu en tant que réponse JSON
+        return jsonify({'routes': contenu_json})
+    except Exception as e:
+        # En cas d'erreur, renvoyer une réponse d'erreur
+        return jsonify({'erreur': str(e)}), 500
+
 if __name__ == '__main__':
     app.run(debug=True)
