@@ -1,7 +1,16 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS, cross_origin
+import os
+
+
 from flask_uploads import UploadSet, configure_uploads, IMAGES
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config["CORS_HEADER"] = "Content-Type"
+
+
+
 utilisateurs = []
 courses = []
 
@@ -34,6 +43,7 @@ class Course:
         self.numero_chauffeur = numero_chauffeur
 
 @app.route('/user', methods=['POST'])
+@cross_origin()
 def ajouter_utilisateur():
     data = request.form
 
@@ -59,8 +69,12 @@ def ajouter_utilisateur():
     return jsonify({'message': 'Utilisateur ajouté avec succès'})
 
 @app.route('/user', methods=['GET'])
+@cross_origin()
 def obtenir_utilisateurs():
     return jsonify({'utilisateurs': utilisateurs})
+
+
+@cross_origin()
 
 @app.route('/course', methods=['POST'])
 def acheter_course():
@@ -100,6 +114,7 @@ def acheter_course():
     else:
         return jsonify({'erreur': 'Le conducteur ou le passager n\'existe pas ou n\'est pas valide'}), 400
 
+@cross_origin
 @app.route('/rating', methods=['POST'])
 def donner_rating():
     data = request.get_json()
@@ -127,6 +142,7 @@ def donner_rating():
     else:
         return jsonify({'erreur': 'La course n\'existe pas'}), 400
 
+@cross_origin
 @app.route('/historique/<nom_utilisateur>', methods=['GET'])
 def obtenir_historique(nom_utilisateur):
  
@@ -138,6 +154,7 @@ def obtenir_historique(nom_utilisateur):
     else:
         return jsonify({'erreur': 'L\'utilisateur spécifié n\'existe pas'}), 400
 
+@cross_origin
 @app.route('/routes', methods=['GET'])
 def obtenir_route():
     try:
