@@ -15,6 +15,7 @@ import { AccountPageComponent } from './pages/account-page/account-page.componen
 import { StarRatingComponent } from './components/star-rating/star-rating.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { FormsModule } from '@angular/forms';
+import { PlanningPageComponent } from './pages/planning-page/planning-page.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     AccountPageComponent,
     StarRatingComponent,
+    PlanningPageComponent,
   ],
   imports: [
     BrowserModule,
