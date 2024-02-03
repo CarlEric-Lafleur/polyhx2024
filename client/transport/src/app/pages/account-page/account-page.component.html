@@ -1,0 +1,22 @@
+<div class="flex">
+  <div id="container">
+    <input
+      type="file"
+      id="fileInput"
+      style="display: none"
+      (change)="onFileSelected($event)"
+    />
+    <label for="fileInput">
+      <div class="image-container">
+        <img [src]="currentImage" alt="Choose Image" id="image-input" />
+        <div class="overlay">
+          <div class="overlay-content">Changer la photo</div>
+        </div>
+      </div>
+    </label>
+    <div id="name-rating-container">
+      <div id="name">{{ name }}</div>
+      <app-star-rating [rating]="rating"></app-star-rating>
+    </div>
+  </div>
+</div>
