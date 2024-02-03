@@ -1,22 +1,77 @@
 <div class="flex">
   <div id="container">
-    <input
-      type="file"
-      id="fileInput"
-      style="display: none"
-      (change)="onFileSelected($event)"
-    />
-    <label for="fileInput">
-      <div class="image-container">
-        <img [src]="currentImage" alt="Choose Image" id="image-input" />
-        <div class="overlay">
-          <div class="overlay-content">Changer la photo</div>
+    <div class="flex-container">
+      <input
+        type="file"
+        id="fileInput"
+        style="display: none"
+        (change)="onFileSelected($event)"
+      />
+      <label for="fileInput">
+        <div class="image-container">
+          <img [src]="currentImage" alt="Choose Image" id="image-input" />
+          <div class="overlay">
+            <div class="overlay-content">Changer la photo</div>
+          </div>
         </div>
+      </label>
+      <div id="name-rating-container">
+        <div class="bold big-text">{{ name }}</div>
+        <app-star-rating [rating]="rating"></app-star-rating>
+        <div class="big-text">{{ points }}&nbsp;points disponibles</div>
       </div>
-    </label>
-    <div id="name-rating-container">
-      <div id="name">{{ name }}</div>
-      <app-star-rating [rating]="rating"></app-star-rating>
+    </div>
+
+    <mat-form-field class="description">
+      <mat-label>Description</mat-label>
+      <textarea
+        matInput
+        placeholder="Je suis..."
+        [(ngModel)]="description"
+      ></textarea>
+    </mat-form-field>
+
+    <div id="driver-info-container" *ngIf="isDriver">
+      <mat-form-field>
+        <mat-label>Numéro de téléphone</mat-label>
+        <input
+          type="tel"
+          matInput
+          [(ngModel)]="phoneNumber"
+          placeholder="123-456-7890"
+          pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field id="vehicleType">
+        <mat-label>Type de véhicule</mat-label>
+        <input matInput [(ngModel)]="vehicleType" />
+      </mat-form-field>
+      <mat-checkbox [(ngModel)]="isElectric">Auto électrique</mat-checkbox>
+    </div>
+
+    <div class="flex-container separate">
+      <button
+        *ngIf="!isDriver"
+        mat-fab
+        extended="true"
+        color="accent"
+        (click)="changeDriverStatus()"
+        id="driver-button"
+      >
+        <mat-icon>drive_eta</mat-icon>
+        Devenir un compagnon
+      </button>
+      <button
+        mat-fab
+        extended="true"
+        color="primary"
+        (click)="saveProfile()"
+        id="save-button"
+      >
+        <mat-icon>save</mat-icon>
+        sauvegarder changements
+      </button>
     </div>
   </div>
 </div>

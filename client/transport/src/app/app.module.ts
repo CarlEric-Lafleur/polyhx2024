@@ -13,6 +13,7 @@ import { AppMaterialModule } from './material.module';
 import { HomeComponent } from './pages/home/home.component';
 import { AccountPageComponent } from './pages/account-page/account-page.component';
 import { StarRatingComponent } from './components/star-rating/star-rating.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { StarRatingComponent } from './components/star-rating/star-rating.compon
     AccountPageComponent,
     StarRatingComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, AppMaterialModule],
+  imports: [BrowserModule, AppRoutingModule, AppMaterialModule, FormsModule],
   providers: [provideClientHydration(), provideAnimationsAsync()],
   bootstrap: [AppComponent],
 })
