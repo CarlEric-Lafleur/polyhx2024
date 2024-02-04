@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-// import { CONSTANTS } from '../map/map.component.constants';
+import { CONSTANTS } from '../map/map.component.constants';
 import { ViewChild } from '@angular/core';
 import { MapDirectionsService } from '@angular/google-maps';
 import { map, Observable } from 'rxjs';
@@ -12,7 +12,7 @@ import { OnInit } from '@angular/core';
   styleUrls: ['./map.component.scss'],
 })
 export class MapComponent implements OnInit {
-  //   SERVER_URL = CONSTANTS.SERVER_URL;
+  SERVER_URL = CONSTANTS.SERVER_URL;
   center: google.maps.LatLngLiteral = { lat: 45.508888, lng: -73.561668 };
   zoom = 10;
   routes: any;
@@ -52,11 +52,11 @@ export class MapComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.httpClient.get(`${this.SERVER_URL}/routes`).subscribe((data: any) => {
-    //   {
-    //     return (this.routes = JSON.parse(data.routes));
-    //   }
-    // });
+    this.httpClient.get(`${this.SERVER_URL}/routes`).subscribe((data: any) => {
+      {
+        return (this.routes = JSON.parse(data.routes));
+      }
+    });
   }
 
   showCoords(event: any) {

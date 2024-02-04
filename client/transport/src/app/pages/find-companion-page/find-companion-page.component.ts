@@ -19,7 +19,7 @@ export class FindCompanionPageComponent {
       vehicleType: 'Toyota Corolla',
       isElectric: true,
       phoneNumber: '123-456-7890',
-      points: 200,
+      points: 75,
       image: '../../../assets/img/user1.png',
     },
     {
@@ -29,7 +29,7 @@ export class FindCompanionPageComponent {
       vehicleType: 'Auto vraiment cool',
       isElectric: false,
       phoneNumber: '514-111-2222',
-      points: 200,
+      points: 100,
       image: '../../../assets/img/user2.png',
     },
     {
@@ -39,7 +39,7 @@ export class FindCompanionPageComponent {
       vehicleType: 'hyundai accent',
       isElectric: false,
       phoneNumber: '450-234-3333',
-      points: 200,
+      points: 100,
       image: '../../../assets/img/user3.png',
     },
   ];

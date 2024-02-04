@@ -16,7 +16,10 @@
     </div>
 
     <div class="option-container" *ngIf="!isInRide">
-      <div>Ce trajet coûte <span class="bold">100</span> points</div>
+      <div>
+        Ce trajet coûte
+        <span class="bold">{{ selectedDriver.points }}</span> points
+      </div>
       <div>
         Vous avez <span class="bold">{{ points }}</span> points
       </div>
@@ -45,14 +48,6 @@
   </mat-drawer>
 
   <div class="sidenav-content">
-    <button
-      type="button"
-      mat-button
-      (click)="drawer.toggle()"
-      *ngIf="!isRideDone"
-    >
-      Toggle sidenav
-    </button>
     <app-rating-popup *ngIf="isRideDone" (rated)="onRate()"></app-rating-popup>
     <app-map
       *ngIf="!isRideDone"
