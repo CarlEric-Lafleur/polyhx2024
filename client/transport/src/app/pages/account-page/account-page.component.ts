@@ -8,14 +8,14 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './account-page.component.scss',
 })
 export class AccountPageComponent {
-  name = 'Carlos lococo';
+  name = 'Carl-Éric Lafleur';
   rating = 4.5;
   @Input() description: string = 'Je suis une bonne personne';
   isDriver: boolean = false;
   vehicleType: string = 'Toyote Corolla';
   isElectric: boolean = false;
   phoneNumber: string = '123-456-7890';
-  points: number = 100;
+  points: number = 200;
 
   currentImage: string = '../../../assets/img/default_profile.png';
   constructor(private httpClient: HttpClient) {}

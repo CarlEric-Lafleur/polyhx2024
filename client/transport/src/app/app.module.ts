@@ -32,7 +32,6 @@ import { RatingPopupComponent } from './components/rating-popup/rating-popup.com
     PlanningPageComponent,
     FindCompanionPageComponent,
     RatingPopupComponent,
-    // AuthButtonComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,13 +40,6 @@ import { RatingPopupComponent } from './components/rating-popup/rating-popup.com
     FormsModule,
     GoogleMapsModule,
     HttpClientModule,
-    // AuthModule.forRoot({
-    //   domain: 'RpRoNG2jDzOu0Lcc8ShcVTIzYuifiO15',
-    //   clientId: 'dev-dws8my8zorm6ql1j.us.auth0.com',
-    //   authorizationParams: {
-    //     redirect_uri: window.location.origin,
-    //   },
-    // }),
   ],
   providers: [provideClientHydration(), provideAnimationsAsync()],
   bootstrap: [AppComponent],
