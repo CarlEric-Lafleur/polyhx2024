@@ -57,6 +57,7 @@
     <app-map
       *ngIf="!isRideDone"
       (selectedDriver)="changeDriver($event)"
+      (selectedDriver)="drawer.toggle()"
     ></app-map>
   </div>
 </mat-drawer-container>
