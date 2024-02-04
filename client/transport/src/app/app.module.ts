@@ -14,6 +14,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { AccountPageComponent } from './pages/account-page/account-page.component';
 import { StarRatingComponent } from './components/star-rating/star-rating.component';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +28,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
     AppRoutingModule,
     AppMaterialModule,
     GoogleMapsModule,
+    HttpClientModule,
   ],
   providers: [provideClientHydration(), provideAnimationsAsync()],
   bootstrap: [AppComponent],
