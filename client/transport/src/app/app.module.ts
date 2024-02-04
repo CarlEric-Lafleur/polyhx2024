@@ -20,6 +20,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FindCompanionPageComponent } from './pages/find-companion-page/find-companion-page.component';
 import { RatingPopupComponent } from './components/rating-popup/rating-popup.component';
 
+import { HttpClientModule } from '@angular/common/http';
+import { AuthModule } from '@auth0/auth0-angular';
+import { AuthButtonComponent } from './components/login-button/login-button.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +33,7 @@ import { RatingPopupComponent } from './components/rating-popup/rating-popup.com
     PlanningPageComponent,
     FindCompanionPageComponent,
     RatingPopupComponent,
+    AuthButtonComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,6 +42,13 @@ import { RatingPopupComponent } from './components/rating-popup/rating-popup.com
     FormsModule,
     GoogleMapsModule,
     HttpClientModule,
+    AuthModule.forRoot({
+      domain: 'RpRoNG2jDzOu0Lcc8ShcVTIzYuifiO15',
+      clientId: 'dev-dws8my8zorm6ql1j.us.auth0.com',
+      authorizationParams: {
+        redirect_uri: window.location.origin,
+      },
+    }),
   ],
   providers: [provideClientHydration(), provideAnimationsAsync()],
   bootstrap: [AppComponent],

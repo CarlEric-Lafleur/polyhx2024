@@ -45,14 +45,21 @@ def ajouter_utilisateur():
     id_utilisateur = len(utilisateurs) + 1
     nom = data['nom']
     description = data.get('description', '')
-    voiture = data.get('voiture', '')
-    est_electrique = data.get('est_electrique', False)
     rating = data.get('rating', 0)
-    is_driver = data.get('is_driver', False)
+    is_driver=data.get("is_driver",False)
     points = data.get('points', 0)
     rating_count = data.get('rating_count', 0)
-    numero_chauffeur = data.get('numero_chauffeur', '')
+    
+    if is_driver:
+        voiture = data.get('voiture', '')
+        est_electrique = data.get('est_electrique', False)
+        numero_chauffeur = data.get('numero_chauffeur', '')
 
+    else:
+        voiture=""
+        est_electrique=False
+        numero_chauffeur=""
+  
     nouvel_utilisateur = User(id_utilisateur, nom, description, voiture, est_electrique, rating, is_driver, points, rating_count, numero_chauffeur)
     utilisateurs.append(nouvel_utilisateur.__dict__)
 
@@ -148,8 +155,7 @@ def obtenir_historique(nom_utilisateur):
 @app.route('/routes', methods=['GET'])
 def obtenir_route():
     try:
-        
-        with open("mapData.json", "r") as f:
+        with open(r"C:\Users\Antoine\Desktop\SCHOOL\HIV2024\polyhx\polyhx2024\server\mapData.json", "r") as f:
             contenu_json = f.read()
 
         return jsonify({'routes': contenu_json})

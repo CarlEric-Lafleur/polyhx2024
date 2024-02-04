@@ -5,9 +5,40 @@
   [zoom]="zoom"
   (mapClick)="showCoords($event)"
 >
-  <map-traffic-layer></map-traffic-layer>
-  <!-- <map-directions-renderer
-    *ngIf="directionsResults$ | async as directionsResults"
-    [directions]="directionsResults"
-  ></map-directions-renderer> -->
+  <!-- <map-traffic-layer></map-traffic-layer> -->
+  <map-transit-layer></map-transit-layer>
+
+  <map-directions-renderer
+    *ngFor="let route of routes; index as i"
+    [directions]="route"
+    [options]="{
+      suppressMarkers: selectedRoute !== i,
+      polylineOptions: {
+        strokeColor: selectedRoute === i ? 'green' : 'grey',
+        strokeWeight: 5
+      }
+    }"
+  ></map-directions-renderer>
+
+  <map-circle
+    *ngFor="let circle of markers; index as i"
+    [center]="circle.position"
+    [radius]="100"
+    [options]="{
+      fillColor: i === 3 ? 'green' : 'blue',
+      fillOpacity: 1,
+      strokeColor: i === 3 ? 'green' : 'blue'
+    }"
+    (circleClick)="showRoute(circle.index)"
+  ></map-circle>
+
+  <map-marker
+    *ngFor="let marker of bornes"
+    [position]="marker.position"
+    [options]="{}"
+    [icon]="{
+      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Lightning_bolt_inside_green_circle.svg/420px-Lightning_bolt_inside_green_circle.svg.png?20210313180949',
+      scaledSize: size
+    }"
+  ></map-marker>
 </google-map>

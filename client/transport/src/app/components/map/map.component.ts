@@ -1,27 +1,69 @@
 import { Component } from '@angular/core';
-// import { CONSTANTS } from '../map/map.component.constants';
+import { CONSTANTS } from '../map/map.component.constants';
 import { ViewChild } from '@angular/core';
 import { MapDirectionsService } from '@angular/google-maps';
 import { map, Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss'],
 })
-export class MapComponent {
-  //   URL = CONSTANTS.URL;
+export class MapComponent implements OnInit {
+  SERVER_URL = CONSTANTS.SERVER_URL;
   center: google.maps.LatLngLiteral = { lat: 45.508888, lng: -73.561668 };
   zoom = 10;
   routes: any;
+  selectedRoute: number = 1;
+
+  markers = [
+    {
+      position: { lat: 45.524587539102605, lng: -73.59621932005314 },
+      index: 1,
+    },
+    {
+      position: { lat: 45.54125574352027, lng: -73.6394554062306 },
+      index: 3,
+    },
+    {
+      position: { lat: 45.495580740564016, lng: -73.61142367039466 },
+      index: 0,
+    },
+    {
+      position: { lat: 45.48643542519496, lng: -73.63541175180751 },
+      index: 2,
+    },
+  ];
+
+  bornes = [
+    { position: { lat: 45.48645283, lng: -73.67541173 } },
+    { position: { lat: 45.495180740964016, lng: -73.41162367039466 } },
+  ];
+
+  size = new google.maps.Size(50, 50);
+
   @ViewChild('map') map: any;
-  constructor(mapDirectionsService: MapDirectionsService) {
-    this.routes = fetch('http://127.0.0.1:5000/routes').then((res) =>
-      res.json()
-    );
+  constructor(
+    private mapDirectionsService: MapDirectionsService,
+    private httpClient: HttpClient
+  ) {}
+
+  ngOnInit(): void {
+    this.httpClient.get(`${this.SERVER_URL}/routes`).subscribe((data: any) => {
+      {
+        return (this.routes = JSON.parse(data.routes));
+      }
+    });
   }
 
   showCoords(event: any) {
-    console.log(this.routes);
+    console.log([event.latLng.lat(), event.latLng.lng()]);
+  }
+
+  showRoute(route: any) {
+    console.log(route);
+    this.selectedRoute = route;
   }
 }
