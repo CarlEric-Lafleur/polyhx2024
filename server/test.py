@@ -148,8 +148,7 @@ def obtenir_historique(nom_utilisateur):
 @app.route('/routes', methods=['GET'])
 def obtenir_route():
     try:
-        
-        with open("mapData.json", "r") as f:
+        with open(r"C:\Users\Antoine\Desktop\SCHOOL\HIV2024\polyhx\polyhx2024\server\mapData.json", "r") as f:
             contenu_json = f.read()
 
         return jsonify({'routes': contenu_json})
