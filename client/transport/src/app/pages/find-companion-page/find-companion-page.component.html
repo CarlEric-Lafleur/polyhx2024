@@ -1,0 +1,15 @@
+<mat-drawer-container class="container" autosize>
+  <mat-drawer #drawer class="sidenav" mode="over" position="end">
+    <img src="../../../assets/img/default_profile.png" />
+    <div id="name-rating-container">
+      <div class="bold big-text">big bro yoooo</div>
+      <app-star-rating></app-star-rating>
+    </div>
+  </mat-drawer>
+
+  <div class="sidenav-content">
+    <button type="button" mat-button (click)="drawer.toggle()">
+      Toggle sidenav
+    </button>
+  </div>
+</mat-drawer-container>

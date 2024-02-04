@@ -1,0 +1,33 @@
+.container {
+  width: 100%;
+  height: 100vh;
+}
+
+.sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidenav {
+  padding: 20px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+img {
+  border-radius: 50%;
+  height: 250px;
+  width: 250px;
+  object-fit: cover;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.big-text {
+  font-size: 2rem;
+}

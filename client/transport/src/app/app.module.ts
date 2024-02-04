@@ -16,6 +16,8 @@ import { StarRatingComponent } from './components/star-rating/star-rating.compon
 import { GoogleMapsModule } from '@angular/google-maps';
 import { FormsModule } from '@angular/forms';
 import { PlanningPageComponent } from './pages/planning-page/planning-page.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FindCompanionPageComponent } from './pages/find-companion-page/find-companion-page.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { PlanningPageComponent } from './pages/planning-page/planning-page.compo
     AccountPageComponent,
     StarRatingComponent,
     PlanningPageComponent,
+    FindCompanionPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,6 +35,7 @@ import { PlanningPageComponent } from './pages/planning-page/planning-page.compo
     AppMaterialModule,
     FormsModule,
     GoogleMapsModule,
+    HttpClientModule,
   ],
   providers: [provideClientHydration(), provideAnimationsAsync()],
   bootstrap: [AppComponent],
