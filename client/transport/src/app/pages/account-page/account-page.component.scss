@@ -1,8 +1,7 @@
 #container {
   width: 90%;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-template-rows: auto 1fr;
+  display: flex;
+  flex-direction: column;
 }
 
 .flex {
@@ -10,6 +9,12 @@
   justify-content: center;
   height: 100vh;
   padding-top: 50px;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
 }
 
 .example-form {
@@ -64,14 +69,44 @@
   text-align: center;
 }
 
-#name {
-  font-size: 2rem;
+.bold {
   font-weight: bold;
+}
+
+.big-text {
+  font-size: 2rem;
 }
 
 #name-rating-container {
   display: flex;
   flex-direction: column;
   margin-left: 25px;
+  gap: 20px;
+}
+
+.description {
+  width: 100%;
+}
+
+#driver-button {
+  width: 65%;
+}
+
+#save-button {
+  width: 30%;
+}
+
+.separate {
+  justify-content: space-evenly;
+}
+
+#driver-info-container {
+  display: flex;
+  flex-direction: row;
   gap: 10px;
+  align-items: center;
+}
+
+#vehicleType {
+  width: 60%;
 }

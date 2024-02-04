@@ -14,6 +14,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { AccountPageComponent } from './pages/account-page/account-page.component';
 import { StarRatingComponent } from './components/star-rating/star-rating.component';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { FormsModule } from '@angular/forms';
+import { PlanningPageComponent } from './pages/planning-page/planning-page.component';
+
 import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
@@ -22,11 +25,13 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     AccountPageComponent,
     StarRatingComponent,
+    PlanningPageComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AppMaterialModule,
+    FormsModule,
     GoogleMapsModule,
     HttpClientModule,
   ],
