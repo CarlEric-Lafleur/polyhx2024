@@ -17,6 +17,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { FormsModule } from '@angular/forms';
 import { PlanningPageComponent } from './pages/planning-page/planning-page.component';
 
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +33,7 @@ import { PlanningPageComponent } from './pages/planning-page/planning-page.compo
     AppMaterialModule,
     FormsModule,
     GoogleMapsModule,
+    HttpClientModule,
   ],
   providers: [provideClientHydration(), provideAnimationsAsync()],
   bootstrap: [AppComponent],
