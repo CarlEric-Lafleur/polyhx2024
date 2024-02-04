@@ -1,15 +1,57 @@
 <mat-drawer-container class="container" autosize>
   <mat-drawer #drawer class="sidenav" mode="over" position="end">
-    <img src="../../../assets/img/default_profile.png" />
-    <div id="name-rating-container">
-      <div class="bold big-text">big bro yoooo</div>
-      <app-star-rating></app-star-rating>
+    <div class="flex-container">
+      <img src="../../../assets/img/default_profile.png" />
+      <div id="name-rating-container">
+        <div class="bold big-text">{{ name }}</div>
+        <app-star-rating></app-star-rating>
+      </div>
     </div>
+    <div>
+      {{
+        description +
+          "jdjdjdjd jdjdjdjd djdjd djdd aj ajas j djdf s dwsa asx saj cka kzx askddkd dcaxc kds XKSXC SDX CAKSZ CZXC ASK  kd kxc dsk caksd ckasc dk dk kca ask cksa kcakeke "
+      }}
+    </div>
+
+    <div class="option-container" *ngIf="!isInRide">
+      <div>Ce trajet coûte <span class="bold">100</span> points</div>
+      <div>
+        Vous avez <span class="bold">{{ points }}</span> points
+      </div>
+      <button mat-raised-button color="accent" (click)="joinRide()">
+        Rejoindre
+      </button>
+    </div>
+    <div class="option-container" *ngIf="isInRide">
+      <div class="phoneNumber">{{ phoneNumber }}</div>
+      <div class="space-between">
+        <button mat-raised-button color="warn" (click)="leaveRide()">
+          Quitter trajet
+        </button>
+        <button
+          mat-raised-button
+          color="accent"
+          (click)="finishRide()"
+          (click)="drawer.toggle()"
+        >
+          trajet terminé
+        </button>
+      </div>
+    </div>
+
+    <div class="option-container"></div>
   </mat-drawer>
 
   <div class="sidenav-content">
-    <button type="button" mat-button (click)="drawer.toggle()">
+    <button
+      type="button"
+      mat-button
+      (click)="drawer.toggle()"
+      *ngIf="!isRideDone"
+    >
       Toggle sidenav
     </button>
+    <app-rating-popup *ngIf="isRideDone" (rated)="onRate()"></app-rating-popup>
   </div>
 </mat-drawer-container>

@@ -40,8 +40,8 @@ class Course:
 @app.route('/user', methods=['POST'])
 @cross_origin()
 def ajouter_utilisateur():
-    data = request.form
-
+    data = request.get_json()
+    print(data)
     id_utilisateur = len(utilisateurs) + 1
     nom = data['nom']
     description = data.get('description', '')

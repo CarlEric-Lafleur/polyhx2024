@@ -18,6 +18,7 @@ import { FormsModule } from '@angular/forms';
 import { PlanningPageComponent } from './pages/planning-page/planning-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FindCompanionPageComponent } from './pages/find-companion-page/find-companion-page.component';
+import { RatingPopupComponent } from './components/rating-popup/rating-popup.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { FindCompanionPageComponent } from './pages/find-companion-page/find-com
     StarRatingComponent,
     PlanningPageComponent,
     FindCompanionPageComponent,
+    RatingPopupComponent,
   ],
   imports: [
     BrowserModule,

@@ -31,3 +31,35 @@ img {
 .big-text {
   font-size: 2rem;
 }
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+#name-rating-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.option-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.phoneNumber {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.space-between {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+}
