@@ -1,9 +1,8 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_file
 from flask_cors import CORS, cross_origin
 import os
 
 
-from flask_uploads import UploadSet, configure_uploads, IMAGES
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -14,12 +13,10 @@ app.config["CORS_HEADER"] = "Content-Type"
 utilisateurs = []
 courses = []
 
-photos = UploadSet("photos", IMAGES)
 app.config["UPLOADED_PHOTOS_DEST"] = "static/uploads/photos"  # Changer le chemin du répertoire
-configure_uploads(app, photos)
 
 class User:
-    def __init__(self, id, nom, description="", voiture="", est_electrique=False, rating=0, is_driver=False, points=0, rating_count=0, historique=[], numero_chauffeur="", photo=""):
+    def __init__(self, id, nom, description="", voiture="", est_electrique=False, rating=0, is_driver=False, points=0, rating_count=0, historique=[], numero_chauffeur=""):
         self.id = id
         self.nom = nom
         self.description = description
@@ -31,7 +28,6 @@ class User:
         self.rating_count = rating_count
         self.historique = historique
         self.numero_chauffeur = numero_chauffeur
-        self.photo = photo
 
 class Course:
     def __init__(self, conducteur_id, passager_id, destination, cout_points, rating=None, numero_chauffeur=""):
@@ -57,11 +53,6 @@ def ajouter_utilisateur():
     points = data.get('points', 0)
     rating_count = data.get('rating_count', 0)
     numero_chauffeur = data.get('numero_chauffeur', '')
-    photo = None
-
-    if 'photo' in request.files:
-        # Sauvegarder la photo 
-        photo = photos.save(request.files['photo'], folder="photo")
 
     nouvel_utilisateur = User(id_utilisateur, nom, description, voiture, est_electrique, rating, is_driver, points, rating_count, numero_chauffeur, photo)
     utilisateurs.append(nouvel_utilisateur.__dict__)
@@ -187,6 +178,12 @@ def obtenir_courses_disponibles():
             })
 
     return jsonify({'courses_disponibles': data_courses_disponibles})
+
+@cross_origin
+@app.route("/photo",methods=["GET"])
+def getPhotos():
+   return send_file(r"C:\Users\kamil\OneDrive\ecole\HIV2024\polyhx2024\server\photo\image.jpg")
+   
 
 if __name__ == '__main__':
     app.run(debug=True)
