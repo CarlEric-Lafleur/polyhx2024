@@ -13,7 +13,6 @@ app.config["CORS_HEADER"] = "Content-Type"
 utilisateurs = []
 courses = []
 
-app.config["UPLOADED_PHOTOS_DEST"] = "static/uploads/photos"  # Changer le chemin du répertoire
 
 class User:
     def __init__(self, id, nom, description="", voiture="", est_electrique=False, rating=0, is_driver=False, points=0, rating_count=0, historique=[], numero_chauffeur=""):
@@ -54,7 +53,7 @@ def ajouter_utilisateur():
     rating_count = data.get('rating_count', 0)
     numero_chauffeur = data.get('numero_chauffeur', '')
 
-    nouvel_utilisateur = User(id_utilisateur, nom, description, voiture, est_electrique, rating, is_driver, points, rating_count, numero_chauffeur, photo)
+    nouvel_utilisateur = User(id_utilisateur, nom, description, voiture, est_electrique, rating, is_driver, points, rating_count, numero_chauffeur)
     utilisateurs.append(nouvel_utilisateur.__dict__)
 
     return jsonify({'message': 'Utilisateur ajouté avec succès'})
@@ -180,10 +179,12 @@ def obtenir_courses_disponibles():
     return jsonify({'courses_disponibles': data_courses_disponibles})
 
 @cross_origin
-@app.route("/photo",methods=["GET"])
-def getPhotos():
-   return send_file(r"C:\Users\kamil\OneDrive\ecole\HIV2024\polyhx2024\server\photo\image.jpg")
-   
+@app.route("/photo", methods=["GET"])
+def get_photos():
+    script_directory = os.path.dirname(os.path.abspath(__file__))
+    image_path = os.path.join(script_directory, "photo", "image.jpg")
+    return send_file(image_path)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
