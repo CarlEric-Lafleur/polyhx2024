@@ -18,6 +18,8 @@ import { FormsModule } from '@angular/forms';
 import { PlanningPageComponent } from './pages/planning-page/planning-page.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { AuthModule } from '@auth0/auth0-angular';
+import { AuthButtonComponent } from './components/login-button/login-button.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
     AccountPageComponent,
     StarRatingComponent,
     PlanningPageComponent,
+    AuthButtonComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +37,13 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     GoogleMapsModule,
     HttpClientModule,
+    AuthModule.forRoot({
+      domain: 'RpRoNG2jDzOu0Lcc8ShcVTIzYuifiO15',
+      clientId: 'dev-dws8my8zorm6ql1j.us.auth0.com',
+      authorizationParams: {
+        redirect_uri: window.location.origin,
+      },
+    }),
   ],
   providers: [provideClientHydration(), provideAnimationsAsync()],
   bootstrap: [AppComponent],
